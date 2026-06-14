@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.telcosuite.example/ts-oss-ops-change-maintenance-operations/events/domain-event.schema.json",
+  "title": "Change And Maintenance Operations Domain Event",
+  "type": "object",
+  "required": ["eventId", "eventType", "occurredAt", "tenantId", "correlationId", "payload"],
+  "properties": {
+    "eventId": { "type": "string", "format": "uuid" },
+    "eventType": { "type": "string" },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "tenantId": { "type": "string" },
+    "brand": { "type": "string" },
+    "market": { "type": "string" },
+    "correlationId": { "type": "string" },
+    "causationId": { "type": "string" },
+    "schemaVersion": { "type": "string", "default": "0.1.0" },
+    "payload": { "type": "object", "additionalProperties": true }
+  },
+  "additionalProperties": false
+}

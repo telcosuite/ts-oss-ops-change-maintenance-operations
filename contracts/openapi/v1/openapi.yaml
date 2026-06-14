@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Change And Maintenance Operations API
+  version: 0.1.0
+  description: Bootstrap OpenAPI placeholder. Replace with TMF-aligned command, query, evidence, and admin APIs from dev-tasks.
+servers:
+  - url: https://api.telcosuite.example/change-maintenance-operations/v1
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Return service health for deployment smoke tests.
+      responses:
+        '200':
+          description: Service is healthy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - app
+      properties:
+        status:
+          type: string
+          example: UP
+        app:
+          type: string
+          example: ts-oss-ops-change-maintenance-operations

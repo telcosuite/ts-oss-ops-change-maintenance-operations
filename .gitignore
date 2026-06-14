@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+dist/
+build/
+target/
+.gradle/
+.idea/
+.vscode/
+.env
+.env.*
+!.env.example
+coverage/
+.nyc_output/
+logs/
+*.log
