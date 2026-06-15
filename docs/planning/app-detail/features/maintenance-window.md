@@ -11,6 +11,7 @@
 # Maintenance Window Feature Specification
 
 
+
 Reviewed: 2026-06-06
 
 Suite: OSS Operations And Assurance
@@ -173,36 +174,6 @@ Implementation updates required for this feature:
 - Add acceptance criteria for source authority, tenant and residency controls, lifecycle state, approval evidence, idempotency, correlation IDs, SLA/OLA timers, and downstream acknowledgement where applicable.
 - Add negative scenarios for stale data, duplicate events, policy denial, missing evidence, downstream outage, unauthorized access, bulk/replay risk, and manual override misuse.
 - Extend tests to include happy path, negative path, edge case, API contract, event replay, data reconciliation, security, accessibility, observability, runbook, and release-gate evidence for the review scope.
-
-## Build-Ready Refinement (2026-06-14)
-
-This refinement converts the feature review material for Maintenance Window into delivery slices that can become epics, stories, API contracts, migrations, and test cases. Treat Change And Maintenance Operations App as the owning application for this feature within Suite OSS Operations And Assurance and schema `change_maintenance`.
-
-| Workstream | Build-ready delivery guidance |
-| --- | --- |
-| UX and workflow | Build the Maintenance Window workbench for authorized operational, product, compliance, and support personas. Include search or intake, guided validation, detail view, lifecycle timeline, decision panel, evidence drawer, exception queue, bulk or replay controls where relevant, saved filters, SLA/OLA aging, empty/error states, and role-aware masking. The UI must expose create, validate, approve, correct, close, and audit maintenance window state and block closure when required evidence, approval, reconciliation, or downstream acknowledgement is missing. |
-| API and events | Implement command and query APIs around maintenance-window using TMF655, TMF681, TMF638, TMF639. Command APIs for Maintenance Window should cover create/initiate, validate, update, approve/reject, hold/release, retry, correct, cancel or compensate, and close where those states apply. Query APIs for Maintenance Window should cover search, detail, timeline, related entities, dependency status, work queue, metrics, and audit/evidence retrieval. Domain events for Maintenance Window should cover created, validated, blocked, approved, rejected, updated, exception raised, exception resolved, completed, corrected, and reconciliation failed where the lifecycle uses... Extension API is required for freeze/blackout control, collision explanation, expected alarm classes, suppression context, notice lead-time validation, and extension approval. Every command, query, and event must carry tenant/brand/market where applicable, actor, source channel, reason code, idempotency key, correlation ID, external reference, lifecycle state, and version metadata. |
-| Data and controls | Persist maintenance window record inside `change_maintenance` with typed lifecycle, owner, status reason, timestamps, policy decision, source freshness, confidence, old/new value, evidence, and reconciliation fields. Change And Maintenance Operations App owns the app-local lifecycle and evidence records for Maintenance Window; consumers must use APIs, events, projections, workflow tasks, or certified data products. Keep TMF payloads, extension characteristics, imported evidence, and low-stability metadata in JSONB while promoting operationally searched lifecycle fields to typed columns. |
-| Integration and handoff | Exchange not yet specified with Change Record and Change Execution consume the window for scheduling and execution gating., NOC consumes suppression context and returns alarms/incidents/restoration validation evidence., Customer 360 supplies consent/contact... only through APIs, events, workflow tasks, governed projections, adapters, evidence packages, or certified data products. Show source owner, freshness, confidence, dependency state, retry status, blocked consumer, and completion evidence so the app does not create shadow mastership or direct cross-schema coupling. |
-| Security, privacy, and compliance | Enforce RBAC/ABAC, tenant and residency boundaries, least privilege, separation of duties, masking, purpose limitation, retention, legal hold, export control, manual override expiry, immutable audit, and evidence chain of custody for Maintenance Window. Sensitive customer, revenue, partner, security, network, credential, or regulatory evidence must be masked unless the persona has explicit operational purpose. |
-| Tests and operations | Create unit, API contract, event replay/idempotency, workflow, integration, migration, data reconciliation, security/privacy, accessibility/localization, performance, dashboard, alert, and runbook tests for Maintenance Window. Cover happy path, assisted path, automated path, exception path, bulk/project path, stale or duplicate input, downstream outage, policy denial, manual override, and reconciliation mismatch. Use the existing review scope - change lifecycle, collision detection, risk and impact analysis, CAB approvals, execution evidence, rollback, and customer or partner communications. - as mandatory backlog and test evidence. |
-
-Implementation notes:
-
-- Treat Change And Maintenance Operations App as the lifecycle owner for maintenance window record; referenced data such as not yet specified must remain references, snapshots, projections, evidence packages, or consumer acknowledgements unless the source file explicitly gives this app mastership.
-- Make TMF alignment visible in every story: use named TMF resources where they fit, document non-TMF extension APIs with OpenAPI, and keep extension payloads compatible with TMF-style identifiers, lifecycle state, related entities, pagination, errors, and event envelopes.
-- Build UI and API behavior around decision evidence, not only CRUD: surface the permitted next actions, policy decision, state reason, owner, SLA/OLA timer, blocked dependency, retry or compensation path, and closure proof.
-- Add development tasks for route/page/component work, command/query handlers, DTO validation, entity/repository/migration changes, outbox/event contracts, projection refresh, privacy/security checks, and operational dashboards.
-- Definition-of-done evidence must show downstream consumers can use published state through APIs, events, projections, workflow tasks, or certified data products without direct database reads or manual spreadsheet reconciliation.
-
-## Definition Of Done
-
-1. Product owner validates planned maintenance, conflict, freeze, notice, extension, suppression, cancellation, and validation journeys.
-2. Architecture owner validates TMF655/TMF681 usage, extension APIs, event contracts, and boundaries with NOC, field, customer, and communication apps.
-3. QA owner covers collision, freeze block, DST/time-zone, missed notice, incident overlap, extension, cancellation, and suppression bypass.
-4. Operations owner validates calendar dashboards, NOC suppression handoff, alerts, runbooks, and shift-handover evidence.
-5. Data steward validates affected entity lineage, schedule precision, notice evidence, and retention class.
-6. Compliance owner validates planned outage notices, legal hold, freeze override audit, and regulatory export.
 
 
 ## Build-Ready Refinement (2026-06-15)
