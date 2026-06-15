@@ -12,6 +12,8 @@
 
 
 
+
+
 Reviewed: 2026-06-06
 
 Suite: OSS Operations And Assurance
@@ -222,8 +224,15 @@ Header added at the top of this file. The 8 build-ready sections below synthesis
 
 ## Acceptance & tests
 
-- AC1 (AC-NOT-CAPTURED): Not applicable — no stem-shaped ACs captured.
-- Proved by: documentation only.
+- AC1 (AC-44eea913): Given a maintenance coordinator creates a window, when required scope and schedule data are present, then a TMF655-related maintenance window is stored with start/end, time zone, affected entities, owner, and correlation ID.
+- AC2 (AC-92312e05): Given a window overlaps freeze or blackout policy, when validation runs, then scheduling is blocked or routed to exception approval with reason and evidence.
+- AC3 (AC-2cb92e3c): Given two windows affect the same redundant path or protected service, when collision detection runs, then the app recommends reschedule or exception approval with topology evidence.
+- AC4 (AC-7d366248): Given customer impact is expected, when the window is approved, then a TMF681 communication plan is created with audience, channel, lead time, consent reference, and message version.
+- AC5 (AC-84b6333a): Given maintenance starts, when NOC suppression context activates, then expected alarm classes, resources, start/end times, and bypass rules are published to NOC.
+- AC6 (AC-0c8f93a6): Given maintenance exceeds approved end, when extension is requested, then the app requires approver, new end time, customer communication update, NOC suppression update, and regulatory review.
+- AC7 (AC-edc5d722): Given work is cancelled, when the window is cancelled, then communications, field tasks, NOC suppression, and calendar projections are updated.
+- AC8 (AC-95be77f8): Given post-change validation fails, when window closure is attempted, then closure is blocked and linked incident/remediation/change actions are created.
+- Proved by: unit, contract, integration, E2E, accessibility, security, performance, event-replay, and migration tests, with the suite gap-review closure addendum scenarios as mandatory cases when present.
 - Source: [features/<this>.md §Acceptance Criteria | anchor: ac-list]
 
 ## Dependencies & release gate

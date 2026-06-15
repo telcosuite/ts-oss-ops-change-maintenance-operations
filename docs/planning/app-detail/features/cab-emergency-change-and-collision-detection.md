@@ -12,6 +12,8 @@
 
 
 
+
+
 Reviewed: 2026-06-06
 
 Suite: OSS Operations And Assurance
@@ -223,8 +225,15 @@ Header added at the top of this file. The 8 build-ready sections below synthesis
 
 ## Acceptance & tests
 
-- AC1 (AC-NOT-CAPTURED): Not applicable — no stem-shaped ACs captured.
-- Proved by: documentation only.
+- AC1 (AC-34f04909): Given CAB agenda is generated, when a change is included, then agenda item shows risk, impact, affected scope, rollback readiness, communication state, collisions, and open evidence gaps.
+- AC2 (AC-818b13b5): Given emergency change is requested, when expedited approval runs, then incident/urgency reason, minimum impact, approver, rollback, validation, communication, and retrospective review requirement are stored.
+- AC3 (AC-54af45ad): Given topology collision is detected, when CAB reviews it, then affected redundancy, services, customers, SLA exposure, and recommended sequencing are visible.
+- AC4 (AC-87b35d23): Given risk exception is requested, when approver accepts it, then policy breach, compensating control, expiry, owner, and audit evidence are stored.
+- AC5 (AC-974cad17): Given rollback readiness is incomplete, when go/no-go is requested, then execution is blocked or exception-approved with reason and NOC visibility.
+- AC6 (AC-61e5d909): Given collision decision is overridden, when execution proceeds, then NOC, service owner, and compliance receive exception event.
+- AC7 (AC-f22f8fa9): Given emergency change completes, when retrospective deadline arrives, then change manager receives review task with execution, incident, rollback, validation, and customer evidence.
+- AC8 (AC-c88d7e7b): Given CAB decision changes, when record updates, then change lifecycle, calendar, communication, and execution gates receive correction events.
+- Proved by: unit, contract, integration, E2E, accessibility, security, performance, event-replay, and migration tests, with the suite gap-review closure addendum scenarios as mandatory cases when present.
 - Source: [features/<this>.md §Acceptance Criteria | anchor: ac-list]
 
 ## Dependencies & release gate

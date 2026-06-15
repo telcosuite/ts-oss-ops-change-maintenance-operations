@@ -12,6 +12,8 @@
 
 
 
+
+
 Reviewed: 2026-06-06
 
 Suite: OSS Operations And Assurance
@@ -221,8 +223,15 @@ Header added at the top of this file. The 8 build-ready sections below synthesis
 
 ## Acceptance & tests
 
-- AC1 (AC-NOT-CAPTURED): Not applicable — no stem-shaped ACs captured.
-- Proved by: documentation only.
+- AC1 (AC-9ec5eb25): Given a change has affected resource references, when risk assessment runs, then impact includes services, customers, products, sites, regions, SLA commitments, incidents, and topology confidence.
+- AC2 (AC-3f34374f): Given topology shows no redundancy, when risk score calculates, then risk severity increases and mitigation requires rollback, NOC monitoring, and service owner approval.
+- AC3 (AC-aa130869): Given unresolved incidents affect the same service/resource, when assessment runs, then approval is blocked or escalated with incident commander visibility.
+- AC4 (AC-d5e21048): Given customer-critical or regulatory services are affected, when risk is calculated, then compliance and communications requirements are added to approval checklist.
+- AC5 (AC-95e7bf0e): Given a mitigation plan is incomplete, when CAB review starts, then change cannot be approved until rollback, validation, staffing, or communication gaps are addressed.
+- AC6 (AC-261b1b56): Given the change schedule moves, when reassessment runs, then collision, freeze, maintenance, and customer impact are recalculated and versioned.
+- AC7 (AC-0f581b8e): Given inventory data is stale, when impact is requested, then assessment marks confidence degraded and creates data steward task.
+- AC8 (AC-bdeb30f5): Given risk exception is approved, when change proceeds, then exception reason, approver, expiry, compensating controls, and audit evidence are stored.
+- Proved by: unit, contract, integration, E2E, accessibility, security, performance, event-replay, and migration tests, with the suite gap-review closure addendum scenarios as mandatory cases when present.
 - Source: [features/<this>.md §Acceptance Criteria | anchor: ac-list]
 
 ## Dependencies & release gate

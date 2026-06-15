@@ -12,6 +12,8 @@
 
 
 
+
+
 Reviewed: 2026-06-06
 
 Suite: OSS Operations And Assurance
@@ -221,8 +223,15 @@ Header added at the top of this file. The 8 build-ready sections below synthesis
 
 ## Acceptance & tests
 
-- AC1 (AC-NOT-CAPTURED): Not applicable — no stem-shaped ACs captured.
-- Proved by: documentation only.
+- AC1 (AC-785040db): Given an authorized requester submits a normal change, when mandatory scope, schedule, implementation, rollback, validation, and affected entity data are present, then a TMF655 change record is created with lifecycle state and correlation I
+- AC2 (AC-e3f2c1d8): Given a change lacks rollback plan or validation tests, when submission occurs, then the record remains draft or exception state with required evidence and owner.
+- AC3 (AC-869df736): Given affected services include SLA-bearing enterprise accounts, when risk assessment runs, then the record displays customer/SLA impact and communication requirement before approval.
+- AC4 (AC-f35b0cda): Given a standard change template is used, when the record is submitted, then standard eligibility, approved template version, allowed scope, and evidence requirements are validated.
+- AC5 (AC-f531d6eb): Given an emergency change is created from an incident, when expedited approval is requested, then incident reference, emergency reason, approver, rollback, and retrospective CAB requirement are captured.
+- AC6 (AC-f06855f6): Given a change is approved, when execution starts, then lifecycle state, NOC monitoring state, maintenance suppression reference, and execution task references are published.
+- AC7 (AC-47383033): Given execution completes, when closure is attempted, then post-change validation, customer communication status, rollback state, and assurance evidence are required.
+- AC8 (AC-169d4b14): Given a closed change is corrected, when authorized correction occurs, then before/after state, reason, approver, and downstream correction events are retained.
+- Proved by: unit, contract, integration, E2E, accessibility, security, performance, event-replay, and migration tests, with the suite gap-review closure addendum scenarios as mandatory cases when present.
 - Source: [features/<this>.md §Acceptance Criteria | anchor: ac-list]
 
 ## Dependencies & release gate

@@ -12,6 +12,8 @@
 
 
 
+
+
 Reviewed: 2026-06-06
 
 Suite: OSS Operations And Assurance
@@ -218,8 +220,15 @@ Header added at the top of this file. The 8 build-ready sections below synthesis
 
 ## Acceptance & tests
 
-- AC1 (AC-NOT-CAPTURED): Not applicable — no stem-shaped ACs captured.
-- Proved by: documentation only.
+- AC1 (AC-cf1ef65c): Given a change has customer impact, when communication plan is created, then audience, affected service/customer references, channel, message version, approver, and timing are stored.
+- AC2 (AC-5ae7fc51): Given customer consent or contact preference restricts a channel, when publication runs, then Customer 360 consent reference is honored and skipped/alternate channel evidence is recorded.
+- AC3 (AC-5f6069ad): Given notice lead time is missed, when change approval is requested, then approval is blocked or exception-approved with reason, customer/care visibility, and compliance review.
+- AC4 (AC-50df1ca2): Given communication is approved, when delivery is requested, then TMF681 communication reference, channel, delivery state, retry state, and message version are stored.
+- AC5 (AC-f4aa874d): Given emergency change starts before notice, when communication plan is created, then emergency reason, incident/change reference, delayed notice approval, and retrospective customer evidence are required.
+- AC6 (AC-58fca800): Given maintenance is extended or cancelled, when status changes, then updated notice or cancellation message is versioned and published to affected channels.
+- AC7 (AC-39931103): Given delivery fails for enterprise contacts, when retry expires, then enterprise service manager and communications manager receive exception with affected accounts.
+- AC8 (AC-e1240bd2): Given regulatory evidence export is requested, when communication is complete, then notice time, audience, message version, delivery result, approver, and correction history are included.
+- Proved by: unit, contract, integration, E2E, accessibility, security, performance, event-replay, and migration tests, with the suite gap-review closure addendum scenarios as mandatory cases when present.
 - Source: [features/<this>.md §Acceptance Criteria | anchor: ac-list]
 
 ## Dependencies & release gate

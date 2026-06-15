@@ -12,6 +12,8 @@
 
 
 
+
+
 Reviewed: 2026-06-06
 
 Suite: OSS Operations And Assurance
@@ -220,8 +222,15 @@ Header added at the top of this file. The 8 build-ready sections below synthesis
 
 ## Acceptance & tests
 
-- AC1 (AC-NOT-CAPTURED): Not applicable — no stem-shaped ACs captured.
-- Proved by: documentation only.
+- AC1 (AC-a5418e8b): Given an approved change reaches its window, when execution starts, then execution state, step plan, owners, pre-check evidence, NOC monitoring, and rollback plan are visible.
+- AC2 (AC-18c82de9): Given a required pre-check fails, when execution start is attempted, then the change is blocked or exception-approved with reason, approver, and compensating control.
+- AC3 (AC-65b23ba0): Given an automation runbook executes, when result returns, then execution records TMF701 process reference, runbook version, output, success/failure, and rollback status.
+- AC4 (AC-4f14a1c7): Given activation/configuration action executes, when result returns, then execution records TMF640 reference, command state, error, and validation evidence.
+- AC5 (AC-278f016c): Given field work is required, when work order status changes, then execution timeline records TMF697 reference, field evidence, access blockers, and expected completion.
+- AC6 (AC-13e1f459): Given rollback trigger fires, when thresholds are breached, then execution pauses, notifies change manager/NOC, records trigger evidence, and starts rollback approval or execution.
+- AC7 (AC-b3d01df3): Given post-change tests pass, when closure is requested, then execution links diagnostics, alarm status, service quality, customer communication, and inventory feedback.
+- AC8 (AC-e6550d7f): Given post-change validation fails, when closure is requested, then closure is blocked and remediation, incident, or rollback action is created.
+- Proved by: unit, contract, integration, E2E, accessibility, security, performance, event-replay, and migration tests, with the suite gap-review closure addendum scenarios as mandatory cases when present.
 - Source: [features/<this>.md §Acceptance Criteria | anchor: ac-list]
 
 ## Dependencies & release gate

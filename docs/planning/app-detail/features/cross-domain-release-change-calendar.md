@@ -12,6 +12,8 @@
 
 
 
+
+
 Reviewed: 2026-06-06
 
 Suite: OSS Operations And Assurance
@@ -222,8 +224,15 @@ Header added at the top of this file. The 8 build-ready sections below synthesis
 
 ## Acceptance & tests
 
-- AC1 (AC-NOT-CAPTURED): Not applicable — no stem-shaped ACs captured.
-- Proved by: documentation only.
+- AC1 (AC-29a76bf7): Given a new change is scheduled, when calendar validation runs, then the calendar entry shows change ID, domain, owner, window, time zone, scope, risk, and approval state.
+- AC2 (AC-12d7b257): Given two entries affect the same service path or customer-impact window, when collision detection runs, then the calendar raises collision with topology/customer evidence and recommended sequencing.
+- AC3 (AC-0c6cf695): Given freeze overlay applies, when scheduling occurs, then the calendar blocks non-exempt changes or routes freeze exception approval.
+- AC4 (AC-776713cd): Given NOC opens shift calendar, when a region/date is selected, then upcoming changes show expected alarms, rollback contacts, risk, and maintenance suppression state.
+- AC5 (AC-17587753): Given partner-impacting change is scheduled, when calendar publishes entry, then partner communication readiness and partner conflict checks are visible.
+- AC6 (AC-10d452e2): Given CAB agenda is generated, when calendar snapshot is exported, then it includes entries, collisions, risks, exceptions, approvals, and evidence snapshot version.
+- AC7 (AC-8c6f30c9): Given a change reschedules, when update is committed, then calendar recalculates collisions, communication lead time, and freeze status.
+- AC8 (AC-f4a8528d): Given calendar source projection is stale, when user views entry, then freshness/confidence and owning source are visible.
+- Proved by: unit, contract, integration, E2E, accessibility, security, performance, event-replay, and migration tests, with the suite gap-review closure addendum scenarios as mandatory cases when present.
 - Source: [features/<this>.md §Acceptance Criteria | anchor: ac-list]
 
 ## Dependencies & release gate
